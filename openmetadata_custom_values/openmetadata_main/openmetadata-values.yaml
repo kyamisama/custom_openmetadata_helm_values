@@ -112,11 +112,11 @@ openmetadata:
       clientType: confidential
       provider: "custom-oidc"
       publicKeys:
-      - "https://XXXX.com/api/v1/system/config/jwks" # Update with your Domain and Make sure this "/api/v1/system/config/jwks" is always configured to enable JWT tokens
-      - "https://XXXX.com/realms/OpenMetadata/protocol/openid-connect/certs"
-      authority: "https://XXXX.com/realms/OpenMetadata"
-      clientId: "openmetadata"                                        # Update your Client ID
-      callbackUrl: "https://XXXX.com/callback"
+      - "{OMD-server-domain}/api/v1/system/config/jwks" # Update with your Domain and Make sure this "/api/v1/system/config/jwks" is always configured to enable JWT tokens
+      - "{Keycloak-server-URL}/realms/OpenMetadata/protocol/openid-connect/certs"
+      authority: "{Keycloak-server-URL}/realms/OpenMetadata"
+      clientId: "{Client ID}"                                         # Update your Client ID
+      callbackUrl: "{OMD-server-domain}/callback"
       oidcConfiguration:
         enabled: true
         oidcType: "Keycloak"
@@ -126,9 +126,9 @@ openmetadata:
         clientSecret:
           secretRef: oidc-secrets
           secretKey: openmetadata-oidc-client-secret
-        discoveryUri: "https://XXXX.com/realms/OpenMetadata/.well-known/openid-configuration"  # Keycloak's discovery URI Update your Keycloak's Domain and Realm
-        callbackUrl: https://XXXX.com/callback
-        serverUrl: https://XXXX.com/
+        discoveryUri: "{Keycloak-server-URL}/realms/OpenMetadata/.well-known/openid-configuration"  # Keycloak's discovery URI Update your Keycloak's Domain and Realm
+        callbackUrl: {OMD-server-domain}/callback
+        serverUrl: {OMD-server-domain}
     # authorizer:
     #   enabled: true
     #   className: "org.openmetadata.service.security.DefaultAuthorizer"
